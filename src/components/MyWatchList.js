@@ -1,12 +1,21 @@
-import React from 'react';
+import React from "react";
+import ShowCard from "./ShowCard";
 
-function MyWatchList() {
+//empty array plus new item
 
-    return(
-        <div className="watch-list-container">
-            {/** Put your shows here... */}
-        </div>
-    )
+function MyWatchList({ watchShows, removeShow, deleteShow }) {
+  const watchedShows = watchShows.map((show) => {
+    return (
+      <ShowCard
+        key={show.id}
+        show={show}
+        onClick={removeShow}
+        deleteShow={deleteShow}
+      />
+    );
+  });
+
+  return <div className="watch-list-container">{watchedShows}</div>;
 }
 
 export default MyWatchList;
